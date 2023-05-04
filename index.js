@@ -1,12 +1,10 @@
 objList = []
 const container = document.getElementById('pokemon-container');
+const pokemonList = data.results;
 
 async function getPokemon() {
-    const response = await fetch('https://pokeapi.co/api/v2/pokemon');
-    const data = await response.json();
-    const pokemonList = data.results;
     
-
+    
     //acá agarro el json del api y los vuelvo como un objeto de personaje
     for(let i = 0; i < pokemonList.length; i++) {
         //const obj = pokemonList[i]
