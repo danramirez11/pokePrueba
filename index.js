@@ -11,7 +11,8 @@ async function getPokemon() {
     for(let i = 0; i < pokemonList.length; i++) {
         //const obj = pokemonList[i]
         const pokemonData = await fetch(pokemonList[i].url).then(res => res.json());
-        const pokemon = new Pokemon(pokemonData.id, pokemonData.name, pokemonData.sprites.front_default)
+        const pokemon = new Pokemon(pokemonData.id, pokemonData.name, pokemonData.sprites.front_default,
+          pokemonData.weight, pokemonData.height)
         //y los meto a la list
         objList.push(pokemon)
     }
@@ -21,19 +22,7 @@ async function getPokemon() {
         const character = objList[i]
         container.innerHTML += character.toHtml(i)
     }
-  
-    /*for (let i = 0; i < pokemonList.length; i++) {
-      const pokemonData = await fetch(pokemonList[i].url).then(res => res.json());
-  
-      const pokemonName = document.createElement('h2');
-      pokemonName.textContent = pokemonData.name;
-  
-      const pokemonImage = document.createElement('img');
-      pokemonImage.src = pokemonData.sprites.front_default;
-  
-      container.appendChild(pokemonName);
-      container.appendChild(pokemonImage);
-    }*/
+
   }
   
   getPokemon();
@@ -42,3 +31,4 @@ async function getPokemon() {
     const character = objList[pos];
     window.location.href = `./detail.html?id=${character.name}`
 }
+
